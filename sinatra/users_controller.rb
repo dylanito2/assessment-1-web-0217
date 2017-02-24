@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    User.create(params)
-    redirect to '/'
+@user =     User.create(params)
+    redirect to "/users/#{@user.id}"
   end
 
   get '/users' do
@@ -30,7 +30,9 @@ class UsersController < ApplicationController
   end
 
   delete '/users/:id/' do
-    @user = user.find(params[:id])
+   @user =  User.find(params[:id])
+#     find is a class method 
+#     @user = user.find(params[:id])
     @user.destroy
   end
 
